@@ -1,10 +1,23 @@
 import streamlit as st
+import tensorflow
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
+from keras.layers import DepthwiseConv2D
 import numpy as np
 import tempfile
 import os
 
+# # Define a custom DepthwiseConv2D layer class
+# class CustomDepthwiseConv2D(DepthwiseConv2D):
+#     def __init__(self, **kwargs):
+#         # Remove the 'groups' argument if present
+#         kwargs.pop('groups', None)
+#         super().__init__(**kwargs)
+
+# # Define custom objects used in the model
+# custom_objects = {
+#     'CustomDepthwiseConv2D': CustomDepthwiseConv2D
+# }
 # Load the pre-trained model
 model_loaded = load_model('model.h5')
 
